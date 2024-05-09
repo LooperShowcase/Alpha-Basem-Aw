@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment Section</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    #comments-container {
+        margin-top: 20px;
+    }
+    .comment {
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+    .comment p {
+        margin: 0;
+    }
+    .comment .author {
+        font-weight: bold;
+    }
+    .comment .date {
+        color: #888;
+        font-size: 0.9em;
+    }
+</style>
+</head>
+<body>
+    <div id="nav">
+        <ul>
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+
+<h1>Comment Section</h1>
+
+<form id="comment-form">
+    <label for="name">Your Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+    <label for="comment">Your Comment:</label><br>
+    <textarea id="comment" name="comment" rows="4" required></textarea><br>
+    <button type="submit">Submit Comment</button>
+</form>
+
+<div id="comments-container">
+    <!-- Comments will be inserted here dynamically -->
+</div>
+
+<script>
+document.getElementById("comment-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    var name = document.getElementById("name").value;
+    var comment = document.getElementById("comment").value;
+    
+    if(name.trim() === '' || comment.trim() === '') {
+        alert("Please fill out all fields.");
+        return;
+    }
+    
+    var currentDate = new Date();
+    var dateString = currentDate.toLocaleString();
+    
+    var newComment = document.createElement("div");
+    newComment.classList.add("comment");
+    newComment.innerHTML = "<p><span class='author'>" + name + "</span> <span class='date'>" + dateString + "</span></p><p>" + comment + "</p>";
+    
+    document.getElementById("comments-container").appendChild(newComment);
+    
+    document.getElementById("name").value = '';
+    document.getElementById("comment").value = '';
+});
+</script>
+
+</body>
+</html>

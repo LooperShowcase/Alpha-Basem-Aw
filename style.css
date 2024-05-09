@@ -1,6 +1,6 @@
 body {
   background-color: rgb(57, 3, 253);
-  font-family: "Micro 5", sans-serif;
+
   font-weight: 400;
 }
 
@@ -42,4 +42,9 @@ div {
 }
 #ronaldo-pic {
   display: block;
+}
+
+img {
+  border-radius: 20px;
+  box-shadow: yellow 2px 2px;
 }
